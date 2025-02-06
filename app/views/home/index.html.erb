@@ -1,0 +1,8 @@
+<h1>Upload a CSV File</h1>
+<%= form_with url: upload_csv_path, local: true, multipart: true do %>
+  <%= file_field_tag :file, accept: ".csv" %>
+  <%= submit_tag "Upload" %>
+<% end %>
+
+<h2>Live PDF Preview: Employment Contract</h2>
+<iframe src="<%= asset_path('EmploymentContract-En.pdf') %>" width="100%" height="600px"></iframe>
