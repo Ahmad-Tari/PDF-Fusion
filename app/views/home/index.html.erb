@@ -1,8 +1,31 @@
-<h1>Upload a CSV File</h1>
-<%= form_with url: upload_csv_path, local: true, multipart: true do %>
-  <%= file_field_tag :file, accept: ".csv" %>
-  <%= submit_tag "Upload" %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Upload and Preview</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1>PDF Fusion</h1>
 
-<h2>Live PDF Preview: Employment Contract</h2>
-<iframe src="<%= asset_path('EmploymentContract-En.pdf') %>" width="100%" height="600px"></iframe>
+    <!-- CSV Upload Form -->
+    <div class="upload-section">
+      <h2>Upload CSV File</h2>
+      <%= form_with url: upload_csv_path, local: true, multipart: true do %>
+        <%= file_field_tag :file, accept: ".csv" %>
+        <%= submit_tag "Upload", class: "btn btn-upload" %>
+      <% end %>
+    </div>
+
+    <!-- PDF Preview Section -->
+    <div class="pdf-preview-section">
+      <h2>Live PDF Preview: Employment Contract</h2>
+      <iframe src="<%= asset_path('EmploymentContract-En.pdf') %>" width="100%" height="600px"></iframe>
+    </div>
+  </div>
+</body>
+</html>
