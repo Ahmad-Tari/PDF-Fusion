@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     root "home#index"
     post "upload_csv", to: "home#upload_csv"
+    get "download_pdf", to: "home#download_pdf"
     resources :documents, only: [ :create, :destroy ]
   end
 

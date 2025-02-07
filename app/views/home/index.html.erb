@@ -26,6 +26,12 @@
       <h2>Live PDF Preview: Employment Contract</h2>
       <iframe src="<%= asset_path('EmploymentContract-En.pdf') %>" width="100%" height="600px"></iframe>
     </div>
+    
+     <!-- Download Button -->
+    <div class="download-section">
+      <h2>Download the Document</h2>
+      <a href="<%= download_pdf_path %>" class="btn btn-primary">Download PDF</a>
+    </div>
   </div>
 </body>
 </html>
