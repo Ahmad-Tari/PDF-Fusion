@@ -8,3 +8,121 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  .upload-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+  }
+  
+  .btn-download {
+    background-color: #28a745; /* Green */
+    color: white;
+    border: 1px solid #28a745;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: 1px solid #dc3545;
+  }
+  
+  /* Hover effects */
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  .btn-upload {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    
+  }
+  .btn-upload.btn:hover{
+    background-color: #269d42;
+
+  }
+  
+  .btn-download {
+    background-color: #007bff;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  .document-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .document-table th, .document-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .document-table th {
+    background: #343a40;
+    color: white;
+  }
+  
