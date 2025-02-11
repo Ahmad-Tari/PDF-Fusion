@@ -1,2 +1,5 @@
-class DocumentsController < ApplicationController
+class DocumentsController < ApplicationController :: Base
+
+    allow_browser versions: :modern
+
 end
