@@ -1,3 +1,4 @@
+<!-- app/views/home/index.html.erb -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +22,24 @@
       <% end %>
     </div>
 
+    <!-- Display number of rows if CSV is uploaded -->
+    <% if session[:csv_data].present? %>
+      <div class="info-section">
+        <p>CSV uploaded with <%= session[:csv_data].size %> rows. Showing preview of first row:</p>
+      </div>
+    <% end %>
+
     <!-- PDF Preview Section -->
     <div class="pdf-preview-section">
-      <%= render 'template' %> <!-- Render the template directly -->
+      <%= render 'template', **@preview_data %>
     </div>
     
     <!-- Download Button -->
     <div class="download-section">
-      <h2>Download the Document</h2>
-      <a href="<%= download_pdf_path %>" class="btn btn-primary">Download PDF</a>
+      <% if session[:csv_data].present? %>
+        <h2>Download the Documents</h2>
+        <%= link_to "Download PDF", download_pdf_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </body>
