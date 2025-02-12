@@ -260,8 +260,12 @@ footer {
   padding: 20px 0;
   text-align: center;
   margin-top: 40px;
+<<<<<<< HEAD
   border-top: 1px solid #444;
 
+=======
+  border-top: 1px solid #444;  
+>>>>>>> 907daa3587193cc2d672c780292ca746daa82c18
 }
 
 footer a {
