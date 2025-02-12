@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <header class="header">
+    <div class="logo-section">
+      <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
+
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+      </ul>
+    </nav>
+  </header>
 </head>
 <body>
   <div class="container">
@@ -19,10 +31,10 @@
 
       <h2>Team Members:</h2>
       <ul>
-        <li><strong>Sujan Thapaliya</strong></li>
-        <li><strong>Anjan Panta</strong></li>
-        <li><strong>M. Ahmad</strong> (Team Leader)</li>
-        <li><strong>Ehsanul Mostofa</strong></li>
+        <li><strong>M. Ahmad</strong> (Team Leader) - 249569340</li>
+        <li><strong>Anjan Panta</strong> - 249416260</li>
+        <li><strong>Sujan Thapaliya</strong> - 249561500</li>
+        <li><strong>Ehsanul Mostofa</strong> - 249584370</li>
       </ul>
 
       <p>
@@ -31,4 +43,13 @@
     </div>
   </div>
 </body>
+<footer>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+  </div>
+  <p class="footer-copyright">
+    &copy; <%= Time.now.year %> PDF Fusion. All rights reserved.
+  </p>
+</footer>
 </html>
