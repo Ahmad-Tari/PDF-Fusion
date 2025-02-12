@@ -31,7 +31,9 @@
       <div>   
       <h5>File Management</h4>
       <%= form_with url: upload_csv_path, local: true, multipart: true do %>
+      <div>
         <%= file_field_tag :file, accept: ".csv" %>
+      </div>
         <%= submit_tag "Upload CSV", class: "btn btn-upload" %>
         <a href="<%= download_pdf_path %>" class="btn btn-primary mt-2 mx-3">Download PDF</a>
       <% end %>
