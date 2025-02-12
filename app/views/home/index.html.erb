@@ -10,8 +10,9 @@
     <!-- Header with Logo and Menu side by side -->
     <header class="header">
       <div class="logo-section">
+      <%= link_to root_path do %>
         <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
-
+        <% end %>
       </div>
       <nav class="menu">
         <ul>
@@ -48,8 +49,8 @@
 </body>
 <footer>
   <div class="footer-links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
+    <%= link_to "Home", root_path %>
+    <%= link_to "About", about_path %>
   </div>
   <p class="footer-copyright">
     &copy; <%= Time.now.year %> PDF Fusion. All rights reserved.

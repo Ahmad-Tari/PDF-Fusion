@@ -8,10 +8,11 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <header class="header">
-    <div class="logo-section">
-      <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
-
-    </div>
+   <div class="logo-section">
+      <%= link_to root_path do %>
+        <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
+        <% end %>
+      </div>
     <nav class="menu">
       <ul>
         <li><%= link_to "Home", root_path %></li>
@@ -45,8 +46,8 @@
 </body>
 <footer>
   <div class="footer-links">
-    <a href="#">Home</a>
-    <a href="#">About</a>
+    <%= link_to "Home", root_path %>
+    <%= link_to "About", about_path %>
   </div>
   <p class="footer-copyright">
     &copy; <%= Time.now.year %> PDF Fusion. All rights reserved.
