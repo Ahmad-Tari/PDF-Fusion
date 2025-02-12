@@ -261,6 +261,7 @@ footer {
   text-align: center;
   margin-top: 40px;
   border-top: 1px solid #444;
+
 }
 
 footer a {
@@ -288,4 +289,31 @@ footer p {
 .footer-copyright {
   font-size: 12px;
   opacity: 0.8;
+}
+  
+ .team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  width: 200px;
+}
+
+.team-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #ddd;
+}
+
+.team-info {
+  padding: 10px;
 }
