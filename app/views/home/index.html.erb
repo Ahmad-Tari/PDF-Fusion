@@ -6,30 +6,44 @@
   <title>Document Upload and Preview</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %> <!-- Ensure the stylesheet is linked properly -->
+    <!-- Header with Logo and Menu side by side -->
+    <header class="header">
+      <div class="logo-section">
+        <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
+
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+      </nav>
+    </header>
 </head>
 <body>
   <div class="container">
-    <h1>PDF Fusion</h1>
+  
 
     <!-- CSV Upload Form -->
     <div class="upload-section">
-      <h2>Upload CSV File</h2>
+    <div>   
+      <h5>Upload CSV File</h4>
       <%= form_with url: upload_csv_path, local: true, multipart: true do %>
         <%= file_field_tag :file, accept: ".csv" %>
         <%= submit_tag "Upload", class: "btn btn-upload" %>
       <% end %>
     </div>
 
+    <!-- Download Button -->
+    <div class="download-section px-4">
+      <h5>Download the Document</h4>
+      <a href="<%= download_pdf_path %>" class="btn btn-primary">Download PDF</a>
+    </div>
+    </div>
     <!-- PDF Preview Section -->
     <div class="pdf-preview-section">
       <%= render 'template' %> <!-- Render the template directly -->
-    </div>
-    
-    <!-- Download Button -->
-    <div class="download-section">
-      <h2>Download the Document</h2>
-      <a href="<%= download_pdf_path %>" class="btn btn-primary">Download PDF</a>
     </div>
   </div>
 </body>

@@ -8,15 +8,58 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* Header Styling */
+header {
+  display: flex;
+  align-items: center;  /* Vertically align the logo and menu */
+  justify-content: space-between;  /* Space between the logo and the menu */
+  padding: 20px;
+}
+
+ .logo-section {
+  flex: 1;  /* Ensures logo takes up available space */
+  flex-shrink: 0;
+}
+
+.logo {
+  max-width: fit-content;
+  height: 40px; 
+}
+
+nav.menu ul {
+  display: flex;        /* Align menu items horizontally */
+  list-style-type: none; /* Remove bullet points from the list */
+  margin: 0;
+  padding: 0;
+}
+
+nav.menu ul li {
+  margin-left: 20px; /* Add spacing between menu items */
+}
+
+nav.menu ul li:first-child {
+  margin-left: 0; /* Remove margin from the first menu item */
+}
+
+nav.menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+nav.menu a:hover {
+  color: #007bff;  /* Add hover effect */
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    display: block; 
+
   }
   
   .container {
@@ -39,6 +82,8 @@ body {
     padding: 15px;
     background: #e9ecef;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
   }
   
   .form-group {
@@ -66,6 +111,13 @@ body {
     background-color: #007bff;
     color: white;
     border: 1px solid #007bff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
   }
   
   .btn-download {
@@ -83,6 +135,7 @@ body {
   /* Hover effects */
   .btn:hover {
     opacity: 0.8;
+    background-color: #0056b3;
   }
   
   .btn-upload {
@@ -128,4 +181,72 @@ body {
     background: #343a40;
     color: white;
   }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Space between links */
+    margin: 0;
+    padding: 0;
+  }
   
+  .menu li {
+    display: inline;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .menu a:hover {
+    color: #007bff;
+  }
+  
+  .about-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-section h1 {
+    color: #333;
+  }
+  
+  .about-section h2 {
+    color: #007bff;
+  }
+  
+  .about-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .about-section ul li {
+    margin: 8px 0;
+  }
+
+  /* Container for both Upload and Download Sections */
+.upload-download-section {
+  display: flex;
+  align-items: column;  /* Vertically align the content */
+  gap: 20px;  /* Space between the upload form and the download button */
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+  /* Optional: You can style the file input field to fit better */
+input[type="file"] {
+  margin-right: 10px;
+}
