@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employment Contract</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-        h4, h5 {
-            color: #333;
-        }
-        .preview-box {
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <title>PDF Fusion - Contract Template</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 <body>
     <div class="container">
@@ -100,10 +89,10 @@
                     <p>
                         The Employer: <i><%= business_name %></i>.<br><br><br>
                         -------------------------------<br>
-                        Date: <%# <i>[signature_date]</i>.<br><br> %>
-                        The Employee: <%# <i>[employee_name]</i>.<br><br><br> %>
+                        Date: <i></i>.<br><br>
+                        The Employee: <i><%= employee_name %></i>.<br><br><br>
                         -------------------------------<br>
-                        Date: <%# <i>[employee_sign_date]</i>.<br> %>
+                        Date: <i></i>.<br>
                     </p>
                 </div>
             </div>

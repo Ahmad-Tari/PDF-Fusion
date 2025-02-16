@@ -30,7 +30,7 @@
     <!-- CSV Upload Form -->
     <div class="upload-section">
       <div>
-        <h5>File Management</h5>
+        <h1>File Management</h1>
         <%= form_with url: upload_csv_path, local: true, multipart: true do %>
           <div>
             <%= file_field_tag :file, accept: ".csv" %>
