@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <header class="header">
+   <div class="logo-section">
+      <%= link_to root_path do %>
+        <%= image_tag 'pdf-fusion-logo.png', alt: 'PDF Fusion Logo', class: 'logo', width: "110", height: "auto" %>
+        <% end %>
+      </div>
+    <nav class="menu">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+  <div class="about-section">
+
+    <h1><strong>About Our Project </strong></h1>
+      <p>
+      PDF Fusion is a powerful tool designed to simplify document generation by automating the creation of multiple personalized PDFs from a single contract template. It provides a default contract template, ensuring a ready-to-use format for users who need quick and consistent document generation. With default mapping, the system automatically aligns uploaded data fields with placeholders in the contract, eliminating the need for manual adjustments.</p>
+
+<p>Users can upload CSV files, allowing bulk data processing and seamless integration into the contract template. The multiple file generator efficiently creates customized PDFs for each entry in the dataset, ensuring accurate and large-scale document production. Once generated, users can download contracts individually or in bulk, streamlining the workflow for businesses that require efficient document automation.
+      </p>
+    </div>
+    <div class="about-section">
+
+      <h1>About Our Team</h1>
+      <p>
+        We are a dedicated team working on this project, and we would like to take this opportunity to thank our professor Randy Lin for his guidance and support throughout this journey. His expertise and insights have been invaluable to the success of our project.
+      </p>
+      <p>
+        We would also like to extend our sincere gratitude to our professor for providing us with this opportunity and guiding us through each phase of our project. His mentorship has been crucial in enhancing our learning and helping us achieve our goals.
+      </p>
+      <h2 class="text-center">Team Members</h2>
+      <div class="team-container">
+        <div class="team-card">
+            <%= image_tag 'ahmad.png', alt: 'Muhammad Ahmad' %>
+          <div class="team-info">
+            <h4>Muhammad Ahmad</h4>
+            <p>ID: 249569340</p>
+            <p>Team Leader</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+            <%= image_tag 'anjan.png', alt: 'Anjan Panta' %>
+          <div class="team-info">
+            <h4>Anjan Panta</h4>
+            <p>ID: 249416260</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+         <%= image_tag 'sujan.png', alt: 'Sujan Thapaliya' %>
+          <div class="team-info">
+            <h4>Sujan Thapaliya</h4>
+            <p>ID: 249561500</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+        
+           <%= image_tag 'mostofa.png', alt: 'Ehsanul Mostofa' %>
+          <div class="team-info">
+            <h4>Ehsanul Mostofa</h4>
+            <p>ID: 249584370</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <%= link_to "Home", root_path %>
+      <%= link_to "About", about_path %>
+    </div>
+    <p class="footer-copyright">
+      &copy; <%= Time.now.year %> PDF Fusion. All rights reserved.
+    </p>
+  </footer>
+</body>
+</html>

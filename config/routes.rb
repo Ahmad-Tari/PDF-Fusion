@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "home#index"
+  get "/about", to: "home#about"
   post "upload_csv", to: "home#upload_csv"
   get "download_pdf", to: "home#download_pdf"
   get 'template', to: 'home#template'
