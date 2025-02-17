@@ -153,11 +153,9 @@ p {
 }
 
 
-/* Custom CSS for Back Button */
-.back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+ /* Custom CSS for Back Button */
+ .back-button {
+  position: relative; /* Changed from absolute to relative */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -168,6 +166,7 @@ p {
   justify-content: center;
   text-decoration: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Add margin to separate from the next section */
 }
 .back-button:hover {
   background-color: #0056b3; /* Darker shade for hover */
