@@ -25,3 +25,25 @@ class HomeController < ApplicationController
     end
   end
 end
+
+class HomeController < ApplicationController
+  def managefile
+    template = params[:template] || 'default' # Default to 'default' if no template is provided
+    @template_partial = case template
+                        when 'default'
+                          'home/template'
+                        when 'template_1'
+                          'home/template_1'
+                        when 'template_2'
+                          'home/template_2'
+                        when 'template_3'
+                          'home/template_3'
+                        else
+                          'home/template'
+                        end
+
+    Rails.logger.info "Selected template: #{template}"
+    Rails.logger.info "Rendering partial: #{@template_partial}"
+  end
+end
+

@@ -1,323 +1,174 @@
-header {
-  display: flex;
-  align-items: center;  /* Vertically align the logo and menu */
-  justify-content: space-between;  /* Space between the logo and the menu */
-  padding: 20px;
-}
-
- .logo-section {
-  flex: 1;  /* Ensures logo takes up available space */
-  flex-shrink: 0;
-}
-
-.logo {
-  max-width: fit-content;
-  height: 40px; 
-}
-
-nav.menu ul {
-  display: flex;        /* Align menu items horizontally */
-  list-style-type: none; /* Remove bullet points from the list */
+/* General Styles */
+body {
+  background-color: #e3f2fd;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-}
-
-nav.menu ul li {
-  margin-left: 20px; /* Add spacing between menu items */
-}
-
-nav.menu ul li:first-child {
-  margin-left: 0; /* Remove margin from the first menu item */
-}
-
-nav.menu a {
-  text-decoration: none;
-  color: #333;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-}
-
-nav.menu a:hover {
-  color: #007bff;  /* Add hover effect */
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    display: block; 
-
-  }
-  
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  .template-container {
-    overflow-y: auto;
-    height: 600px;
-  }
-  .template-container {
-    overflow-y: auto;
-    height: 600px;
-  }
-  .template-container {
-    overflow-y: auto;
-    height: 600px;
-  }
-  .template-container {
-    overflow-y: auto;
-    height: 600px;
-  }
-  
-  h1, h2 {
-    color: #333;
-  }
-  
-  .upload-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #e9ecef;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  .btn-primary:hover {
-    background-color: #0056b3;
-    color: white;
-  }
-  
-  .btn-download {
-    background-color: #28a745; /* Green */
-    color: white;
-    border: 1px solid #28a745;
-  }
-  
-  .btn-delete {
-    background-color: #dc3545; /* Red */
-    color: white;
-    border: 1px solid #dc3545;
-  }
-  
-  /* Hover effects */
-  .btn:hover {
-    opacity: 0.8;
-    background-color: #0056b3;
-  }
-  
-  .btn-upload {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    
-  }
-  .btn-upload.btn:hover{
-    background-color: #269d42;
-    color: white;
-
-  }
-  
-  .btn-download {
-    background-color: #007bff;
-  }
-  
-  .btn-delete {
-    background-color: #dc3545;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
-  .document-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .document-table th, .document-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .document-table th {
-    background: #343a40;
-    color: white;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px 20px;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #ddd;
-  }
-
-  .menu ul {
-    list-style: none;
-    display: flex;
-    gap: 20px; /* Space between links */
-    margin: 0;
-    padding: 0;
-  }
-  
-  .menu li {
-    display: inline;
-  }
-  
-  .menu a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px;
-  }
-  
-  .menu a:hover {
-    color: #007bff;
-  }
-  
-  .about-section {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .about-section h1 {
-    color: #333;
-  }
-  
-  .about-section h2 {
-    color: #007bff;
-  }
-  
-  .about-section ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .about-section ul li {
-    margin: 8px 0;
-  }
-
-  /* Container for both Upload and Download Sections */
-.upload-download-section {
   display: flex;
-  align-items: column;  /* Vertically align the content */
-  gap: 20px;  /* Space between the upload form and the download button */
-  margin-bottom: 20px;
-  align-items: flex-start;
-}
-  /* Optional: You can style the file input field to fit better */
-input[type="file"] {
-  margin-right: 10px;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 40px;
-<<<<<<< HEAD
-  border-top: 1px solid #444;
-
-=======
-  border-top: 1px solid #444;  
->>>>>>> 907daa3587193cc2d672c780292ca746daa82c18
+/* Navbar Styles */
+.navbar-container {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-footer a {
-  color: #fff;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-brand img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.1);
+}
+
+.navbar-brand span {
+  color: #125d98;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #125d98;
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
-  margin: 0 10px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
-footer a:hover {
-  color: #4CAF50;
+.nav-links a:hover {
+  background: #e3f2fd;
 }
 
-footer p {
-  margin: 5px 0;
+/* Container Styles */
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 95%;
+  max-width: 1200px;
+  flex: 1; /* Allow the container to grow and push the footer to the bottom */
 }
 
-.footer-links {
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0; /* Increased padding for better visibility */
+  text-align: center;
+  margin-top: auto; /* Push the footer to the bottom */
+  width: 100%; /* Ensure footer spans the full width */
+}
+
+.footer p {
+  margin: 0; /* Remove default margin for the paragraph */
+  font-size: 16px; /* Adjust font size for better readability */
+  color: white; /* Ensure text color is white */
+}
+
+/* Button Styles */
+.btn-custom {
+  background-color: #64b5f6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #42a5f5;
+}
+
+/* Team Card Styles */
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
-.footer-links a {
-  font-size: 14px;
-}
-
-.footer-copyright {
-  font-size: 12px;
-  opacity: 0.8;
-}
-  
- .team-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-
 .team-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   text-align: center;
-  width: 200px;
+  padding: 25px;
 }
 
-.team-card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 2px solid #ddd;
+h3 {
+  color: #125d98;
+  margin-bottom: 20px;
 }
 
-.team-info {
-  padding: 10px;
+p {
+  color: #333;
+  line-height: 1.6;
+}
+
+ /* Custom styles for the scrollable preview section */
+ .preview-container {
+  height: 800px; /* Fixed height for the preview */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd; /* Optional: Add a border */
+  padding: 15px; /* Optional: Add some padding */
+  background-color: #f9f9f9; /* Optional: Add a light background */
+}
+
+/* Optional: Style the scrollbar */
+.preview-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.preview-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+
+/* Custom CSS for Back Button */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff; /* Match your theme color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.back-button:hover {
+  background-color: #0056b3; /* Darker shade for hover */
 }

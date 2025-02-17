@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Fusion - Manage Files</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar-container">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="<%= asset_path('pdf-fusion-logo.png') %>" alt="PDF Fusion Logo">
+      <span>PDF Fusion</span>
+    </a>
+    <div class="nav-links">
+      <a href="<%= root_path %>">Home</a>
+      <a href="<%= about_path %>">About</a>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="<%= root_path %>" class="back-button">&#8592;</a>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Upload and Download Section -->
+    <div class="upload-download-section">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card p-4 shadow-sm">
+            <h5>Upload CSV</h5>
+            <%= form_with url: upload_csv_path, local: true, multipart: true do %>
+              <div class="mb-3">
+                <%= file_field_tag :file, accept: ".csv", class: "form-control" %>
+              </div>
+              <%= submit_tag "Upload", class: "btn btn-custom w-100" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+          <a href="<%= download_pdf_path %>" class="btn btn-primary w-100">Download PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Preview Section -->
+    <div class="mt-4">
+      <h4 class="text-center">Template Preview</h4>
+      <div class="preview-container">
+        <% if @template_partial.present? && lookup_context.exists?(@template_partial, [], true) %>
+          <%= render @template_partial %>
+        <% else %>
+          <p class="text-center text-muted">No template selected or template file missing.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <%= Time.now.year %> PDF Fusion. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
