@@ -16,7 +16,7 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+      min-height: 100vh;
     }
 
     .navbar-container {
@@ -37,8 +37,11 @@
       color: white;
       padding: 25px 0;
       text-align: center;
-      margin-top: auto; /* Push the footer to the bottom */
-      width: 100%; /* Ensure footer spans the full width */
+      margin-top: auto;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 0;
     }
 
     .navbar-brand {
@@ -89,50 +92,13 @@
       margin: 20px auto;
       width: 95%;
       max-width: 1200px;
-      flex: 1; /* Allow the container to grow and push the footer to the bottom */
-      min-height: 75vh; /* Make the container taller */
+      
+      min-height: 73vh;
     }
 
-    .team-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-
-    .team-card {
-      text-align: center;
-      padding: 25px;
-    }
-
-    h3 {
-      color: #125d98;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .btn-custom {
-      background-color: #64b5f6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
-      transition: 0.3s;
-    }
-
-    .btn-custom:hover {
-      background-color: #42a5f5;
-    }
-
-    /* New Styles for Cards and Upload Section */
     .card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #64b5f6; /* Light blue border for cards */
+      border: 2px solid #64b5f6;
       border-radius: 12px;
       height: 100%;
     }
@@ -215,18 +181,6 @@
           </div>
         </div>
 
-        <!-- Default Template -->
-        <div class="col">
-          <div class="card">
-            <a href="<%= managefile_path(template: 'default') %>">
-              <img src="<%= asset_path('default-template-thumbnail.png') %>" class="card-img-top" alt="Default Template">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title">Default Template</h5>
-              <p class="card-text">Temporary Foreign Worker</p>
-            </div>
-          </div>
-        </div>
 
         <!-- Algoma Template -->
         <div class="col">
@@ -237,19 +191,6 @@
             <div class="card-body">
               <h5 class="card-title">Algoma University</h5>
               <p class="card-text">Student Contract</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Template 3 -->
-        <div class="col">
-          <div class="card">
-            <a href="<%= managefile_path(template: 'template_3') %>">
-              <img src="<%= asset_path('template-3-thumbnail.png') %>" class="card-img-top" alt="Template 3">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title">Agreement Template</h5>
-              <p class="card-text">Internship Agreement</p>
             </div>
           </div>
         </div>
