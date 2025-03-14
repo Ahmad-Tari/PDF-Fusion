@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :documents, only: [:create, :destroy]
 
   get "up" => "rails/health#show", as: :rails_health_check
+  post "upload", to: "home#upload", as: "upload_file"
 end

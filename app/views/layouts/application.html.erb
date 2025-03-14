@@ -10,8 +10,6 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= yield :head %>
-
   <!-- Favicon -->
   <%= favicon_link_tag "pdf-fusion-logo.png", rel: "icon", type: "image/png" %>
   <%= favicon_link_tag "pdf-fusion-logo.png", rel: "apple-touch-icon" %>
@@ -22,9 +20,25 @@
   <!-- JavaScript -->
   <%= javascript_importmap_tags %>
 
+  <!-- Yield for additional head content -->
+  <%= yield :head %>
 </head>
 
 <body>
-  <%= yield %>
+  <!-- Flash Messages -->
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
+
+ 
+
 </body>
 </html>
