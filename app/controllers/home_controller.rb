@@ -1,6 +1,6 @@
 # app/controllers/home_controller.rb
 require "csv"
-require 'zip'
+require "zip"
 
 class HomeController < ApplicationController
   def index
@@ -27,7 +27,7 @@ class HomeController < ApplicationController
 
   def upload_csv
     service = EmploymentContractService.new
-    
+
     begin
       session[:csv_data] = service.process_csv(params[:file])
       flash[:notice] = "CSV with #{session[:csv_data].size} rows uploaded successfully!"
@@ -44,14 +44,14 @@ class HomeController < ApplicationController
     return redirect_to(root_path, alert: "No CSV data available") unless session[:csv_data]
 
     service = EmploymentContractService.new
-    
+
     begin
       zip_data = service.generate_pdfs(session[:csv_data])
-      
+
       send_data zip_data,
-                filename: 'EmploymentContracts.zip',
-                type: 'application/zip',
-                disposition: 'attachment'
+                filename: "EmploymentContracts.zip",
+                type: "application/zip",
+                disposition: "attachment"
     rescue StandardError => e
       redirect_to root_path, alert: "Error generating PDFs: #{e.message}"
     end
@@ -63,23 +63,45 @@ class HomeController < ApplicationController
     Rails.logger.info "Rendering partial: #{@template_partial}"
   end
 
+  def upload_template
+    uploaded_file = params[:template]
+
+    if uploaded_file && uploaded_file.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      # Process the uploaded template, for example, saving it or processing it
+      # For now, let's just log the file name for debugging
+      Rails.logger.info "Uploaded template: #{uploaded_file.original_filename}"
+
+      # You can save the file to a directory or database if needed
+      # For example, saving to a directory:
+      File.open(Rails.root.join("public", "uploads", uploaded_file.original_filename), "wb") do |file|
+        file.write(uploaded_file.read)
+      end
+
+      flash[:notice] = "Template uploaded successfully!"
+      redirect_to managefile_path # Redirect back to the managefile page
+    else
+      flash[:alert] = "Invalid file format. Please upload a DOCX file."
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_template_and_preview_data
-    template = params[:template] || 'default' # Default to 'default' if no template is provided
+    template = params[:template] || "default" # Default to 'default' if no template is provided
     @template_partial = case template
-                        when 'default'
-                          'home/template'
-                        when 'template_1'
-                          'home/template_1'
-                        when 'template_2'
-                          'home/template_2'
-                        when 'template_3'
-                          'home/template_3'
-                        else
-                          'home/template'
-                        end
-  
+    when "default"
+                          "home/template"
+    when "template_1"
+                          "home/template_1"
+    when "template_2"
+                          "home/template_2"
+    when "template_3"
+                          "home/template_3"
+    else
+                          "home/template"
+    end
+
     # Use session[:csv_data] or default data for the preview
     if session[:csv_data].present?
       @preview_data = session[:csv_data].first.transform_keys(&:to_sym)

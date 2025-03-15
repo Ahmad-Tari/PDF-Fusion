@@ -171,15 +171,19 @@
       <h4 class="text-center">Select a Template</h4>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
         <!-- Upload Template Card -->
-        <div class="col">
-          <div class="card upload-card">
-            <div class="upload-card-content">
-              <div class="upload-icon">+</div>
-              <h5>Upload Template</h5>
-              <p class="text-muted small mb-0">(DOCX format only)</p>
-            </div>
-          </div>
-        </div>
+<div class="col">
+  <div class="card upload-card">
+    <form action="<%= upload_path %>" method="post" enctype="multipart/form-data">
+      <div class="upload-card-content">
+        <input type="file" name="template" class="form-control" accept=".docx" required>
+        <h5>Upload Template</h5>
+        <p class="text-muted small mb-0">(DOCX format only)</p>
+        <button type="submit" class="btn btn-primary mt-3">Upload</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 
 
         <!-- Algoma Template -->
