@@ -63,8 +63,8 @@
         <div class="content-block">
             <p>
                 <strong>
-                    <%= "[full_name]" %>,<br>
-                    <%= "[title]" %> <%= "[position]" %><br>
+                    <i><%= full_name %></i>,<br>
+                    <i><%= title %></i> <i><%= position %></i><br>
                     School of Computer Science and Technology<br>
                     Algoma University
                 </strong>
@@ -75,20 +75,20 @@
 
             <!-- Salutation -->
             <p>
-                Dear <%= "[short_title]" %>. <%= "[last_name]" %>,
+                Dear <i><%= short_name %></i>. <i><%= last_name %></i>,
             </p>
 
             <!-- Main Content -->
             <p>
                 This letter is being written to inform you that, as per the language
                 in Article 35:06 of the 2023-2026 FTCA, your stipend for teaching
-                <%= "[course_code]" %> as an overload in the <%= "[team_name]" %> term will be as
+                <i><%= course_code %></i> as an overload in the <i><%= team_name %></i> term will be as
                 follows:
             </p>
 
             <!-- Payment Options -->
             <div class="ms-4">
-                <p>• Elect to be paid the current base rate of pay of $<%= "[amount]" %>. This
+                <p>• Elect to be paid the current base rate of pay of $<i><%= amount %></i>. This
                 stipend is inclusive of all benefits and it is understood that your
                 payments will be subject to the standard deductions required by law.
                 Overloads will be paid in one lump sum at the end of the contract;</p>

@@ -11,16 +11,14 @@ class HomeController < ApplicationController
       @preview_data = first_row.transform_keys(&:to_sym)
     else
       @preview_data = {
-        business_name: "Default Business Name",
-        employer_name: "Default Employer Name",
-        employer_email: "default@example.com",
-        employer_contact: "000-000-0000",
-        employer_address: "Default Address",
-        employee_name: "Default Employee Name",
-        employee_email: "default@example.com",
-        employee_contact: "000-000-0000",
-        employee_address: "Default Address",
-        duration_months: "0"
+        full_name: "Full Name",
+        title: "Default Employer Name",
+        position: "default@example.com",
+        short_name: "000-000-0000",
+        last_name: "Default Address",
+        course_code: "Default Employee Name",
+        team_name: "default@example.com",
+        amount: "0"
       }
     end
   end
@@ -49,7 +47,7 @@ class HomeController < ApplicationController
       zip_data = service.generate_pdfs(session[:csv_data])
       
       send_data zip_data,
-                filename: 'EmploymentContracts.zip',
+                filename: 'StudentContracts.zip',
                 type: 'application/zip',
                 disposition: 'attachment'
     rescue StandardError => e
@@ -85,16 +83,14 @@ class HomeController < ApplicationController
       @preview_data = session[:csv_data].first.transform_keys(&:to_sym)
     else
       @preview_data = {
-        business_name: "Default Business Name",
-        employer_name: "Default Employer Name",
-        employer_email: "default@example.com",
-        employer_contact: "000-000-0000",
-        employer_address: "Default Address",
-        employee_name: "Default Employee Name",
-        employee_email: "default@example.com",
-        employee_contact: "000-000-0000",
-        employee_address: "Default Address",
-        duration_months: "0"
+        full_name: "Default Business Name",
+        title: "Default Employer Name",
+        position: "default@example.com",
+        short_name: "000-000-0000",
+        last_name: "Default Address",
+        course_code: "Default Employee Name",
+        team_name: "default@example.com",
+        amount: "0"
       }
     end
   end

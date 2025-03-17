@@ -21,7 +21,7 @@ class EmploymentContractService
         generate_batch_pdfs(batch, temp_dir)
       end
       create_zip_file(temp_dir)
-      File.read(File.join(temp_dir, 'EmploymentContracts.zip'))
+      File.read(File.join(temp_dir, 'StudentContracts.zip'))
     end
   end
 
@@ -55,12 +55,12 @@ class EmploymentContractService
   end
 
   def generate_filename(row, index)
-    safe_name = row['employee_name'].gsub(/[^0-9A-Za-z]/, '_')
-    "EmploymentContract_#{index + 1}_#{safe_name}.pdf"
+    safe_name = row['full_name'].gsub(/[^0-9A-Za-z]/, '_')
+    "StudentContract_#{index + 1}_#{safe_name}.pdf"
   end
 
   def create_zip_file(temp_dir)
-    zip_path = File.join(temp_dir, 'EmploymentContracts.zip')
+    zip_path = File.join(temp_dir, 'StudentContracts.zip')
     Zip::File.open(zip_path, Zip::File::CREATE) do |zipfile|
       Dir[File.join(temp_dir, '*.pdf')].each do |pdf_file|
         zipfile.add(File.basename(pdf_file), pdf_file)
