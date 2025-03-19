@@ -28,6 +28,9 @@ class EmploymentContractService
     # Validate headers
     validate_csv_headers(csv_data.headers)
 
+    # Validate rows for missing data
+    validate_csv_rows(csv_data)
+
     csv_data.map(&:to_hash)
   end
 
@@ -68,6 +71,16 @@ class EmploymentContractService
     missing_columns = REQUIRED_COLUMNS - headers
     if missing_columns.any?
       raise InvalidCSVError, "Missing required columns: #{missing_columns.join(', ')}"
+    end
+  end
+
+  # Validate CSV rows for missing data
+  def validate_csv_rows(csv_data)
+    csv_data.each_with_index do |row, index|
+      missing_values = REQUIRED_COLUMNS.select { |col| row[col].blank? }
+      if missing_values.any?
+        raise InvalidCSVError, "Row #{index + 1} is missing data for: #{missing_values.join(', ')}"
+      end
     end
   end
 

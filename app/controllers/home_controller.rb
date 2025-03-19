@@ -31,7 +31,7 @@ class HomeController < ApplicationController
       flash[:notice] = "CSV uploaded successfully!"
       redirect_to managefile_path
     rescue EmploymentContractService::InvalidCSVError => e
-      flash[:alert] = e.message # Display the error message
+      flash[:alert] = e.message
       redirect_to managefile_path
     end
   end
