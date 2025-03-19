@@ -1,5 +1,7 @@
 class EmploymentContractService
-  BATCH_SIZE = 5 # Define your batch size
+  class InvalidCSVError < StandardError; end # Custom error for invalid CSV
+
+  BATCH_SIZE = 5
 
   def initialize
     @processed_rows = 0
@@ -7,15 +9,15 @@ class EmploymentContractService
   end
 
   def process_csv(file)
-    # Parse the CSV file without validation
+    validate_csv_file(file) # Validate file before processing
     csv_data = CSV.parse(file.read, headers: true)
-    csv_data.map(&:to_hash) # Return full data after processing
+    csv_data.map(&:to_hash)
   end
 
-  def generate_pdfs(csv_data)
+  def generate_pdfs(csv_data) # Moved above private to make it public
     @total_rows = csv_data.size
     @processed_rows = 0
-    
+
     Dir.mktmpdir do |temp_dir|
       csv_data.each_slice(BATCH_SIZE) do |batch|
         generate_batch_pdfs(batch, temp_dir)
@@ -25,7 +27,22 @@ class EmploymentContractService
     end
   end
 
-  private
+  private # Everything below is private
+
+  def validate_csv_file(file)
+    raise InvalidCSVError, "No file uploaded" if file.nil?
+
+    # Check the file extension
+    unless File.extname(file.original_filename).casecmp?(".csv")
+      raise InvalidCSVError, "Invalid file type. Only CSV files are allowed."
+    end
+
+    # Check MIME type
+    allowed_mime_types = ["text/csv", "application/vnd.ms-excel"]
+    unless allowed_mime_types.include?(file.content_type)
+      raise InvalidCSVError, "Invalid file format. Please upload a valid CSV file."
+    end
+  end
 
   def generate_batch_pdfs(batch, temp_dir)
     batch.each_with_index do |row, index|
@@ -37,13 +54,13 @@ class EmploymentContractService
   def generate_single_pdf(row, temp_dir, index)
     # Convert hash keys to symbols for the template
     template_vars = row.transform_keys(&:to_sym)
-    
+
     html = ApplicationController.renderer.render(
       template: 'home/_template',
       layout: false,
       locals: template_vars
     )
-    
+
     pdf = WickedPdf.new.pdf_from_string(html)
     save_pdf(pdf, temp_dir, index, row)
   end

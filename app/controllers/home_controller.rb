@@ -25,18 +25,18 @@ class HomeController < ApplicationController
 
   def upload_csv
     service = EmploymentContractService.new
-    
+  
     begin
       session[:csv_data] = service.process_csv(params[:file])
-      flash[:notice] = "CSV with #{session[:csv_data].size} rows uploaded successfully!"
+      flash[:notice] = "CSV uploaded successfully!"
       redirect_to managefile_path
     rescue EmploymentContractService::InvalidCSVError => e
       flash[:alert] = e.message
-      session[:csv_data] = nil
-      set_template_and_preview_data # Call the helper method
-      render :managefile # Render the same page instead of redirecting
+      redirect_to managefile_path
     end
   end
+  
+  
 
   def download_pdf
     return redirect_to(root_path, alert: "No CSV data available") unless session[:csv_data]
