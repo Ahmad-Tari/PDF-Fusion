@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center">
-          <a href="<%= download_pdf_path %>" class="btn btn-primary w-100">Download PDF</a>
+          <%= link_to 'Download PDF', download_pdf_path(file_id: params[:file_id]), class: "btn btn-primary w-100" %>
         </div>
       </div>
     </div>

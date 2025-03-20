@@ -1,51 +1,54 @@
 # app/controllers/home_controller.rb
 require "csv"
 require 'zip'
+require 'securerandom'
 
 class HomeController < ApplicationController
   def index
     @documents = Document.all
-    if session[:csv_data].present?
-      # Get the first row and transform keys to symbols
-      first_row = session[:csv_data].first
-      @preview_data = first_row.transform_keys(&:to_sym)
+    if params[:file_id].present? && File.exist?(csv_file_path(params[:file_id]))
+      csv_data = CSV.read(csv_file_path(params[:file_id]), headers: true)
+      first_row = csv_data.first
+      @preview_data = first_row.to_h.transform_keys(&:to_sym)
     else
       @preview_data = {
-        full_name: "Full Name",
-        title: "Default Employer Name",
-        position: "default@example.com",
-        short_name: "000-000-0000",
-        last_name: "Default Address",
-        course_code: "Default Employee Name",
-        team_name: "default@example.com",
-        amount: "0"
+        full_name: "Default Full Name",
+        title: "Default Title",
+        position: "Default Position",
+        short_name: "Default Short Name",
+        last_name: "Default Last Name",
+        course_code: "Default Course Code",
+        team_name: "Default Team Name",
+        amount: "1000"
       }
     end
   end
 
   def upload_csv
     service = EmploymentContractService.new
-  
+
     begin
-      session[:csv_data] = service.process_csv(params[:file])
+      file_id = SecureRandom.uuid # Generate a unique file ID
+      csv_data = service.process_csv(params[:file])
+      File.write(csv_file_path(file_id), csv_data.to_csv) # Save CSV data to a file
       flash[:notice] = "CSV uploaded successfully!"
-      redirect_to managefile_path
+      redirect_to managefile_path(file_id: file_id) # Pass the file ID to the next action
     rescue EmploymentContractService::InvalidCSVError => e
       flash[:alert] = e.message
       redirect_to managefile_path
     end
   end
-  
-  
 
   def download_pdf
-    return redirect_to(root_path, alert: "No CSV data available") unless session[:csv_data]
+    file_id = params[:file_id]
+    return redirect_to(root_path, alert: "No CSV data available") unless file_id.present? && File.exist?(csv_file_path(file_id))
 
     service = EmploymentContractService.new
-    
+
     begin
-      zip_data = service.generate_pdfs(session[:csv_data])
-      
+      csv_data = CSV.read(csv_file_path(file_id), headers: true)
+      zip_data = service.generate_pdfs(csv_data.map(&:to_h))
+
       send_data zip_data,
                 filename: 'StudentContracts.zip',
                 type: 'application/zip',
@@ -63,6 +66,10 @@ class HomeController < ApplicationController
 
   private
 
+  def csv_file_path(file_id)
+    Rails.root.join('tmp', "csv_#{file_id}.csv") # Store CSV files in the tmp directory
+  end
+
   def set_template_and_preview_data
     template = params[:template] || 'default' # Default to 'default' if no template is provided
     @template_partial = case template
@@ -77,20 +84,21 @@ class HomeController < ApplicationController
                         else
                           'home/template'
                         end
-  
-    # Use session[:csv_data] or default data for the preview
-    if session[:csv_data].present?
-      @preview_data = session[:csv_data].first.transform_keys(&:to_sym)
+
+    # Use file-based CSV data or default data for the preview
+    if params[:file_id].present? && File.exist?(csv_file_path(params[:file_id]))
+      csv_data = CSV.read(csv_file_path(params[:file_id]), headers: true)
+      @preview_data = csv_data.first.to_h.transform_keys(&:to_sym)
     else
       @preview_data = {
-        full_name: "Default Business Name",
-        title: "Default Employer Name",
-        position: "default@example.com",
-        short_name: "000-000-0000",
-        last_name: "Default Address",
-        course_code: "Default Employee Name",
-        team_name: "default@example.com",
-        amount: "0"
+        full_name: "Default Full Name",
+        title: "Default Title",
+        position: "Default Position",
+        short_name: "Default Short Name",
+        last_name: "Default Last Name",
+        course_code: "Default Course Code",
+        team_name: "Default Team Name",
+        amount: "1000"
       }
     end
   end
